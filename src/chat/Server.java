@@ -12,12 +12,9 @@ public class Server {
     public static void main(String[] args) {
         ConsoleHelper.writeMessage("Input server port number:");
         try (ServerSocket serverSocket = new ServerSocket(ConsoleHelper.readInt())) {
-            //ConsoleHelper.writeMessage("Server started");
             while (true){
                 Socket clientSocket = serverSocket.accept();
-                //PrintWriter writer = new PrintWriter(clientSocket.getOutputStream());
                 Handler handler = new Handler(clientSocket);
-                //connectionMap.put(handler.getName(), writer);
                 handler.start();
             }
         } catch (IOException e) {
